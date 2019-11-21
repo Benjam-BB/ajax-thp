@@ -1,17 +1,23 @@
 <h1 class="text-center mb-4">Welcome to my todolist app</h1>
 <%= render 'layouts/task_form'  %>
 <div class="container">
-  <ul>
+  <ul id="category-list">
   <% @categories.each do  |category|%>
-  <li><%= category.title  %></li>
+  <li class="category-title"><%= category.title  %></li>
   <div class="card">
-    <ul>
+    <ul  id="<%= category.title %>">
       <% category.tasks.each do |task|  %>
-      <li>
+      <li class="row" id="<%=task.title%>">
+      <div id="test" class="col-10" >
         <%= task.title  %>
         <% unless task.deadline.nil? %>
           , to read: <%= task.deadline.strftime('%D')  %>
         <% end %>
+        </div>
+        <div class="row col-2">
+        <%=link_to '<i class=" d-flex justify-content-end btn fas fa-trash-alt"></i>' .html_safe, task_path(task.id), data: {:confirm => "Are you sure to delete this task."}, method: 'DELETE', remote: true %>
+        <%= check_box_tag :status, true, task.status , data: { remote: true, url: task_path(task.id), params: { id: task.id, status: !task.status}.to_param, method: "put" }%>
+        </div>
       </li>
       <% end %>
     </ul>
@@ -19,7 +25,6 @@
   <% end %>
   </ul>
 </div>
-
 <div class="container">
   <div class="row">
     <% @tasks.each do |task|  %>
