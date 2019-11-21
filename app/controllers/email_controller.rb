@@ -4,6 +4,7 @@ class EmailController < ApplicationController
   end
 
   def show
+    @emails = Email.all
     @email = Email.find(params[:id])
     respond_to do |format|
       format.html { redirect_to root_path }
@@ -27,6 +28,7 @@ class EmailController < ApplicationController
   end
 
   def update
+    @emails = Email.all
     @email = Email.find(params[:id])
     @email.update(read: false)
     respond_to do |format|

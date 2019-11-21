@@ -1,0 +1,4 @@
+<h5 class="list-group-item list-group-item-dark">Vos Emails</h5>
+        <% @emails.each do  |email|%>
+        <li class="list-group-item read-<%=email.read%>" id="<%=email.id%>"><%= link_to "#{email.object}", email_path(email.id), remote: true %></li>
+        <%end%>
