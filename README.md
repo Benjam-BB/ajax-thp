@@ -1,24 +1,20 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Une super App Rails qui gère les mails comme un chef. 
+Elle marche aussi sur Heroku : https://ajax-thp.herokuapp.com/
 
-Things you may want to cover:
+Attention pense à changer le nom de la base de donéee avant de lancer le db:create.
+Pour cela rdv sur database.yml
 
-* Ruby version
+Avant de te lancer pense à faire : 
+```
+bundle install
+rails db:create
+rails db:migrate
+rails db:seed
+```
 
-* System dependencies
+Et puis lance un ptit ``` shotgun -p 3000```
+Et rdv sur http://localhost:3000/
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Aller enjoy !
