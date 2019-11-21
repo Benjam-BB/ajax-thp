@@ -1,0 +1,9 @@
+
+            <div class="card-body">
+                <h5 class="card-title"><%=@email.object%></h5>
+                <p class="card-text"><%=@email.body%></p>
+                <div class="row d-flex justify-content-center">
+                <button class="btn btn-primary m-3">Répondre</button>
+                <%= link_to '<button class="btn btn-outline-primary m-3"> Supprimer</button>' .html_safe, email_path(email.id), data: {:confirm => "Are you sure to delete this task."}, method: 'DELETE', remote: true  %>
+                </div>
+            </div>

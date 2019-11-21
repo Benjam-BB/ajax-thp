@@ -1,0 +1,25 @@
+<h1 class="text-center mb-4">Your Email box</h1>
+<div class="container d-flex justify-content-center">
+    <%= form_tag(email_index_path, method: "post", id: "email-form", class: "form", remote: true)  do %>
+        <%= submit_tag("Reçevoir un email", class: "btn btn-primary")%>
+    <%end%>
+</div>
+<div class="row m-5">
+    <div class="col-4">
+    <ul class="list-group" id="email-list">
+        <h5 class="list-group-item list-group-item-dark">Vos Emails</h5>
+        <% @emails.each do  |email|%>
+        <li class="list-group-item " id="<%=email.id%>"><%= link_to "#{email.object}", email_path(email.id), remote: true %></li>
+        <%end%>
+    </ul>
+    </div>
+    <div class="col-8">
+    <div class="card">
+            <h5 class="card-header">Email Séléctionné</h5>
+            <div class="card-body" id="content-email">
+
+            </div>
+</div>
+    </div>
+</div>
+
