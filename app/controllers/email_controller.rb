@@ -9,10 +9,11 @@ class EmailController < ApplicationController
       format.html { redirect_to root_path }
       format.js { }
     end
+    @email.update(read: true)
   end
 
   def create
-    @email = Email.new(object: Faker::Superhero.power, body: Faker::Lorem.sentence)
+    @email = Email.new(object: Faker::Superhero.power, body: Faker::Lorem.sentence, read: false)
     if @email.save
       respond_to do |format|
         format.html { redirect_to root_path }
@@ -26,6 +27,14 @@ class EmailController < ApplicationController
   end
 
   def update
+    @email = Email.find(params[:id])
+    @email.update(read: false)
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.js { }
+    end
+    flash[:notice] = "Email edited"
+
   end
 
   def edit
